@@ -1,0 +1,278 @@
+﻿<Page x:Class="AnimalSavior.View.Dashboard.Homepage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AnimalSavior.View.Dashboard"
+      mc:Ignorable="d" 
+      Height="569"
+      Width="795"
+      Title="Homepage">
+    <Page.Resources>
+        <Style x:Key="MyFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Control}">
+                        <Grid Margin="3,2">
+                            <Rectangle
+                                x:Name="r1"
+                                Stroke="Black"
+                                StrokeDashArray="2 2"
+                                StrokeThickness="1" />
+                            <Border
+                                x:Name="border"
+                                Width="{TemplateBinding ActualWidth}"
+                                Height="{TemplateBinding ActualHeight}"
+                                BorderThickness="1"
+                                CornerRadius="5" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ShadowStyle">
+            <Setter Property="Control.Foreground" Value="LightGray" />
+        </Style>
+
+        <Style x:Key="InformButton" TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontSize" Value="11px" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource MyFocusVisual}" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.2" Color="#FFFFD190" />
+                        <GradientStop Offset="0.85" Color="Orange" />
+                        <GradientStop Offset="1" Color="#FFFFD190" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                            x:Name="border"
+                            Padding="4,2"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="DarkGray"
+                            BorderThickness="1"
+                            CornerRadius="10">
+                            <Grid>
+                                <ContentPresenter
+                                    x:Name="contentShadow"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource ShadowStyle}">
+                                    <ContentPresenter.RenderTransform>
+                                        <TranslateTransform X="1.0" Y="1.0" />
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                                <ContentPresenter
+                                    x:Name="content"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF4788c8" />
+                                <Setter Property="Foreground" Value="#FF4788c8" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0.35" Color="#FFFFD190" />
+                                            <GradientStop Offset="0.95" Color="Orange" />
+                                            <GradientStop Offset="1" Color="#FFFFD190" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="content" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <TranslateTransform Y="1.0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsDefaulted" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF282828" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF282828" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.7" />
+                                <Setter Property="Foreground" Value="Gray" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="White">
+        <Border
+            Grid.Row="0"
+            Margin="0,0,0,511"
+            Background="#FF0097E6"
+            BorderBrush="#FF0097E6"
+            BorderThickness="1"
+            CornerRadius="0,0,20,20" />
+        <Image Margin="749,8,-1,521" Source="/AnimalSavior;component/User_icon_BLACK-01.png" Stretch="Fill"/>
+        <Label Content="Hai Budy..!!" HorizontalAlignment="Left" Margin="660,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="White" Height="30"/>
+        <Label Content="Animal Savior" HorizontalAlignment="Left" Margin="23,1,0,0" VerticalAlignment="Top" FontSize="28" FontWeight="Bold" Foreground="White" Height="42"/>
+        <Label
+            x:Name="lbl_kuesioner"
+            Width="233"
+            Height="38"
+            Margin="9,151,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Rekomendasi Dokter"
+            FontFamily="Arial rounded"
+            FontSize="20"
+            FontWeight="Bold" />
+        <Button
+            Margin="12,191,674,266"
+            Content=""
+            Style="{StaticResource InformButton}">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Image
+            Margin="37,215,700,290"
+            Source="/AnimalSavior;component/doctor.png"
+            Stretch="Fill" />
+        <Button
+            Margin="137,191,548,266"
+            Content=""
+            Style="{StaticResource InformButton}">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Image
+            Margin="164,215,572,290"
+            Source="/AnimalSavior;component/doctor (1).png"
+            Stretch="Fill" />
+        <Label
+            Width="116"
+            Height="26"
+            Margin="6,311,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Dr. Deddy Cahyadi"
+            FontWeight="Bold" />
+        <Label
+            Width="98"
+            Height="24"
+            Margin="142,311,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Dr. Mudi Taylor"
+            FontWeight="Bold" />
+        <Button
+            Margin="12,87,422,442"
+            Content="Cari dokter hewan terdekat"
+            FontSize="14"
+            FontWeight="Normal"
+            Foreground="#FF7E7676"
+            Style="{StaticResource InformButton}">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="#FFDAD5D5" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button
+            Margin="261,191,426,266"
+            Content=""
+            Style="{StaticResource InformButton}">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Image
+            Margin="286,215,450,290"
+            Source="/AnimalSavior;component/doctor (1).png"
+            Stretch="Fill" />
+        <Label
+            Width="101"
+            Height="24"
+            Margin="262,311,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Prof. Dr. Ericaa "
+            FontWeight="Bold" />
+        <Button
+            Margin="383,191,303,266"
+            Content=""
+            Style="{StaticResource InformButton}">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label
+            Width="107"
+            Height="24"
+            Margin="383,313,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Dr. Bambang S"
+            FontWeight="Bold" />
+        <Image
+            Margin="409,211,328,292"
+            Source="/AnimalSavior;component/doctor.png"
+            Stretch="Fill" RenderTransformOrigin="0.5,0.5" >
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="-0.839"/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-0.487"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label
+            x:Name="lbl_kuesioner_Copy"
+            Width="233"
+            Height="34"
+            Margin="2,341,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Tips and Trick"
+            FontFamily="Arial rounded"
+            FontSize="20"
+            FontWeight="Bold" />
+        <Button
+            Margin="12,375,674,80"
+            Content=""
+            Style="{StaticResource InformButton}">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Image
+            Margin="37,399,700,104"
+            Source="/AnimalSavior;component/doctor.png"
+            Stretch="Fill" />
+
+    </Grid>
+</Page>

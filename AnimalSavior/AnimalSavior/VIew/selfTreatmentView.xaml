@@ -1,0 +1,100 @@
+﻿<Page
+    x:Class="AnimalSavior.View.kuisionerView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AnimalSavior.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="kuisionerView"
+    Width="795"
+    Height="569"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}"
+    mc:Ignorable="d">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="173*" />
+            <RowDefinition Height="34*" />
+            <RowDefinition Height="212*" />
+        </Grid.RowDefinitions>
+        <Label
+            Width="190"
+            Height="32"
+            Margin="233,128,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Gejala"
+            FontFamily="Arial Rounded"
+            FontSize="20"
+            FontWeight="Bold" />
+        <Button
+            x:Name="kuesioner_button"
+            Grid.Row="2"
+            Width="248"
+            Height="38"
+            Margin="263,164,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FF0097E6"
+            BorderBrush="White"
+            Content="Kembali"
+            Foreground="White" Click="kuesioner_button_Click" />
+        <Border
+            Grid.Row="0"
+            Margin="0,0,0,177"
+            Background="#FF0097E6"
+            BorderBrush="#FF0097E6"
+            BorderThickness="1"
+            CornerRadius="0,0,20,20">
+            <Label
+                x:Name="lbl_userProfile"
+                Width="148"
+                Height="46"
+                Margin="310,9,335,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Content="Self-Care"
+                FontFamily="Sogoe ui"
+                FontSize="28"
+                FontWeight="Bold"
+                Foreground="White" />
+        </Border>
+        <Label
+            Grid.RowSpan="2"
+            Width="190"
+            Height="32"
+            Margin="233,219,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Cara Mengatasi"
+            FontFamily="Arial Rounded"
+            FontSize="20"
+            FontWeight="Bold" />
+        <ComboBox
+            x:Name="comboBox"
+            Width="312"
+            Height="49"
+            Margin="233,165,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            VerticalContentAlignment="Center"
+            FontSize="16">
+            <ComboBoxItem Content="Keracunan" IsSelected="True" />
+            <ComboBoxItem Content="Rabies" />
+        </ComboBox>
+        <RichTextBox
+            x:Name="richTextBox"
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Width="312"
+            Height="136"
+            Margin="233,31,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsReadOnly="True">
+            <FlowDocument>
+                <Paragraph />
+            </FlowDocument>
+        </RichTextBox>
+    </Grid>
+</Page>

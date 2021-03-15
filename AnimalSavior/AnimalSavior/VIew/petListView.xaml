@@ -1,0 +1,219 @@
+﻿<Page
+    x:Class="AnimalSavior.View.petListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AnimalSavior.View"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="listPetView"
+    Height="569"
+    Width="795"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <Style x:Key="MyFocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Control}">
+                        <Grid Margin="3,2">
+                            <Rectangle
+                                x:Name="r1"
+                                Stroke="Black"
+                                StrokeDashArray="2 2"
+                                StrokeThickness="1" />
+                            <Border
+                                x:Name="border"
+                                Width="{TemplateBinding ActualWidth}"
+                                Height="{TemplateBinding ActualHeight}"
+                                BorderThickness="1"
+                                CornerRadius="2" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ShadowStyle">
+            <Setter Property="Control.Foreground" Value="LightGray" />
+        </Style>
+
+        <Style x:Key="InformButton" TargetType="{x:Type Button}">
+            <Setter Property="OverridesDefaultStyle" Value="True" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="FontFamily" Value="Verdana" />
+            <Setter Property="FontSize" Value="11px" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FocusVisualStyle" Value="{StaticResource MyFocusVisual}" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.2" Color="#FFFFD190" />
+                        <GradientStop Offset="0.85" Color="Orange" />
+                        <GradientStop Offset="1" Color="#FFFFD190" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+                            x:Name="border"
+                            Padding="4,2"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="DarkGray"
+                            BorderThickness="1"
+                            CornerRadius="15">
+                            <Grid>
+                                <ContentPresenter
+                                    x:Name="contentShadow"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Style="{StaticResource ShadowStyle}">
+                                    <ContentPresenter.RenderTransform>
+                                        <TranslateTransform X="1.0" Y="1.0" />
+                                    </ContentPresenter.RenderTransform>
+                                </ContentPresenter>
+                                <ContentPresenter
+                                    x:Name="content"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF4788c8" />
+                                <Setter Property="Foreground" Value="#FF4788c8" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0.35" Color="#FFFFD190" />
+                                            <GradientStop Offset="0.95" Color="Orange" />
+                                            <GradientStop Offset="1" Color="#FFFFD190" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter TargetName="content" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <TranslateTransform Y="1.0" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsDefaulted" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF282828" />
+                            </Trigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="#FF282828" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.7" />
+                                <Setter Property="Foreground" Value="Gray" />
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="White" OpacityMask="Black">
+        <Border
+            Grid.Row="0"
+            Margin="0,0,0,511"
+            Background="#FF0097E6"
+            BorderBrush="#FF0097E6"
+            BorderThickness="1"
+            CornerRadius="0,0,20,20" />
+
+        <Label
+            x:Name="lbl_userProfile_Copy"
+            Width="196"
+            Height="46"
+            Margin="292,8,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Daftar Hewan"
+            FontFamily="Sogoe ui"
+            FontSize="28"
+            FontWeight="Bold"
+            Foreground="White" />
+        <Label
+            x:Name="lbl_alamatEmail"
+            Width="124"
+            Height="32"
+            Margin="188,132,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Daftar Hewan:"
+            FontSize="16"
+            FontWeight="Bold" RenderTransformOrigin="0.25,1.703" />
+        <DataGrid
+            x:Name="dataGrid"
+            Width="316"
+            Height="244"
+            Margin="188,186,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            ItemsSource="{Binding loadData}"
+            SelectionChanged="dataGrid_SelectionChanged"
+            SelectionMode="Extended">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="b1"
+                                Click="b1_Click"
+                                Content="Edit" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="b_del"
+                                Click="b_del_Click"
+                                Content="Hapus" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Petnama}" Header="Nama Pet" />
+                <DataGridTextColumn Binding="{Binding PetJenis}" Header="Jenis Pet" />
+                <DataGridTextColumn Binding="{Binding PetInfo}" Header="Info" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button
+            x:Name="bt_tambah_Copy"
+            Width="164"
+            Height="42"
+            Margin="527,153,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Background="#FF0097E6"
+            BorderBrush="White"
+            Click="bt_tambah_Copy_Click"
+            Content="Tambah Pet Baru"
+            FontSize="16"
+            Foreground="White" />
+        <Button
+            Margin="10,10,692,525"
+            Click="Button_Click_1"
+            Content="&lt;- Kembali"
+            FontFamily="Sogoe ui"
+            FontSize="15"
+            IsDefault="True"
+            Style="{StaticResource InformButton}">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="1" Color="White" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Page>
